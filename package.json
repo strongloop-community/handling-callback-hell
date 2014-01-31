@@ -1,0 +1,23 @@
+{
+  "name": "callback-hell",
+  "version": "0.0.0",
+  "description": "",
+  "main": "async.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "async": "0.2.9",
+    "co": "3.0.2",
+    "q": "1.0.0",
+    "thunkify": "0.0.1"
+  },
+  "devDependencies": {
+    "tap": "0.4.8"
+  },
+  "scripts": {
+    "test": "tap -d --harmony test/*.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
