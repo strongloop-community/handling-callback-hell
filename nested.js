@@ -1,4 +1,5 @@
 var fs = require('fs')
+var path = require('path')
 
 module.exports = function (dir, cb) {
   fs.readdir(dir, function (er, files) {
@@ -8,7 +9,7 @@ module.exports = function (dir, cb) {
     var stats = []
 
     files.forEach(function (file, index) {
-      fs.stat(dir+'/'+file, function (er, stat) {
+      fs.stat(path.join(dir,file), function (er, stat) {
         if (called) return
         if (er) {
           called = true

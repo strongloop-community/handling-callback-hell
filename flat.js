@@ -1,4 +1,19 @@
 var fs = require('fs')
+var path = require('path')
+
+module.exports = function (dir, cb) {
+  fs.readdir(dir, function (er, files) {
+    if (er) return cb(er)
+    var paths = files.map(function (file) { return path.join(dir,file) })
+
+    getStats(paths, function (er, stats) {
+      if (er) return cb(er)
+
+      var largestFile = getLargestFile(files, stats)
+      cb(null, largestFile)
+    })
+  })
+}
 
 function getLargestFile (files, stats, next) {
   var largest = stats
@@ -26,20 +41,6 @@ function getStats (paths, cb) {
 
       stats[index] = stat
       if (--counter == 0) cb(null, stats)
-    })
-  })
-}
-
-module.exports = function (dir, cb) {
-  fs.readdir(dir, function (er, files) {
-    if (er) return cb(er)
-    var paths = files.map(function (file) { return dir+'/'+file })
-
-    getStats(paths, function (er, stats) {
-      if (er) return cb(er)
-
-      var largestFile = getLargestFile(files, stats)
-      cb(null, largestFile)
     })
   })
 }

@@ -1,5 +1,6 @@
 var fs = require('fs')
 var async = require('async')
+var path = require('path')
 
 module.exports = function (dir, cb) {
   async.waterfall([
@@ -7,7 +8,7 @@ module.exports = function (dir, cb) {
       fs.readdir(dir, next)
     },
     function (files, next) {
-      var paths = files.map(function (file) { return dir+'/'+file })
+      var paths = files.map(function (file) { return path.join(dir,file) })
       async.map(paths, fs.stat, function (er, stats) {
         next(er, files, stats)
       })
