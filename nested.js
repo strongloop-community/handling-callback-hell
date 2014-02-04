@@ -5,14 +5,14 @@ module.exports = function (dir, cb) {
   fs.readdir(dir, function (er, files) {
     if (er) return cb(er)
     var counter = files.length
-    var called = false
+    var errored = false
     var stats = []
 
     files.forEach(function (file, index) {
       fs.stat(path.join(dir,file), function (er, stat) {
-        if (called) return
+        if (errored) return
         if (er) {
-          called = true
+          errored = true
           return cb(er)
         }
         stats[index] = stat

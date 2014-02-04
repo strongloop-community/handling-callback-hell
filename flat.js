@@ -28,14 +28,14 @@ function getLargestFile (files, stats, next) {
 
 function getStats (paths, cb) {
   var counter = paths.length
-  var called = false
+  var errored = false
   var stats = []
 
   paths.forEach(function (path, index) {
     fs.stat(path, function (er, stat) {
-      if (called) return
+      if (errored) return
       if (er) {
-        called = true
+        errored = true
         return cb(er)
       }
 
