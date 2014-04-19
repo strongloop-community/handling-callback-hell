@@ -1,7 +1,7 @@
 # Handling Callback Hell
 ## Practical solutions to asynchronous control flow.
 
-This example repo includes various approaches discussed in the accompanying StrongLoop blog post on managing callback hell.  It is required to run Node 0.11.x or higher for the generator examples.
+This example repo includes various approaches discussed in the [accompanying StrongLoop blog post on managing callback hell](http://strongloop.com/strongblog/node-js-callback-hell-promises-generators/).  It is required to run Node 0.11.x or higher for the generator examples.
 
 All the dependencies are bundled in the project.
 
